@@ -309,7 +309,7 @@ document.querySelectorAll('h1,h2').forEach(h=>h.querySelectorAll('.l').forEach((
 
 /* one continuous waveform, N screens wide. Seeded so it is the same song every time. */
 const wave=document.getElementById('wave'),wp=document.getElementById('wp');
-function buildWave(){const W=innerWidth,H=wave.clientHeight||70,step=6,total=W*N;let seed=7,d='';
+function buildWave(){const W=innerWidth||1280,H=Math.round(wave.getBoundingClientRect().height)||70,step=6,total=W*N;let seed=7,d='';
   const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
   for(let x=0,i=0;x<=total;x+=step,i++){const t=x/W;
     const swell=.25+.75*Math.pow(Math.sin(Math.PI*(t%1)),2);
